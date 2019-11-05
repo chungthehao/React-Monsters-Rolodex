@@ -8,7 +8,11 @@ class App extends Component {
 
     // Default value
     this.state = {
-      string: 'Hi Henry Chung!'
+      monsters: [
+        { name: 'Frankenstein', id: '6wy2' },
+        { name: 'Dracula', id: '4asw' },
+        { name: 'Zombie', id: '9snw' }
+      ]
     };
   }
 
@@ -17,14 +21,11 @@ class App extends Component {
     // Tat ca moi thu nhin giong HTML deu la JSX (div, src, p, button, onClick,...)
     return (
       <div className='App'>
-        <header className='App-header'>
-          <img src={logo} className='App-logo' alt='logo' />
-          <p>{this.state.string}</p>
-
-          <button onClick={() => this.setState({ string: 'Hello Hao!' })}>
-            Change Text
-          </button>
-        </header>
+        {// Tra ve 1 mang cac JSX, React tu hieu la render nhung cai trong mang do.
+        // Key de React biet duoc thang nao thay doi thi chi update thang do thoi, ko re-render lai toan bo ca list
+        this.state.monsters.map(monster => (
+          <h1 key={monster.id}>{monster.name}</h1>
+        ))}
       </div>
     );
   }
