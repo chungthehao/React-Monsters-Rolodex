@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React /*, { Component }*/ from 'react';
 import './App.css';
 
-class App extends Component {
+class App extends React.Component {
   constructor() {
     super(); // Call the constructor method on the 'Component' class
 
