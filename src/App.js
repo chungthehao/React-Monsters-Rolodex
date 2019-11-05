@@ -13,6 +13,8 @@ class App extends Component {
   }
 
   render() {
+    // Khi state thay doi (bang setState), this render method gets called again
+    // Tat ca moi thu nhin giong HTML deu la JSX (div, src, p, button, onClick,...)
     return (
       <div className='App'>
         <header className='App-header'>
