@@ -25,13 +25,7 @@ class App extends React.Component {
     // Tat ca moi thu nhin giong HTML deu la JSX (div, src, p, button, onClick,...)
     return (
       <div className='App'>
-        <CardList thamSo={1 + 3} name='Henry Chung'>
-          {// Tra ve 1 mang cac JSX, React tu hieu la render nhung cai trong mang do.
-          // Key de React biet duoc thang nao thay doi thi chi update thang do thoi, ko re-render lai toan bo ca list
-          this.state.monsters.map(monster => (
-            <h1 key={monster.id}>{monster.name}</h1>
-          ))}
-        </CardList>
+        <CardList monsters={this.state.monsters} />
       </div>
     );
   }
