@@ -7,12 +7,14 @@ class App extends React.Component {
 
     // Default value
     this.state = {
-      monsters: [
-        { name: 'Frankenstein', id: '6wy2' },
-        { name: 'Dracula', id: '4asw' },
-        { name: 'Zombie', id: '9snw' }
-      ]
+      monsters: []
     };
+  }
+
+  componentDidMount() {
+    fetch(`https://jsonplaceholder.typicode.com/users`)
+      .then(res => res.json())
+      .then(users => this.setState({ monsters: users }));
   }
 
   render() {
