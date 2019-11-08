@@ -22,6 +22,12 @@ class App extends React.Component {
   }
 
   render() {
+    const { monsters, searchField } = this.state;
+    // filter method get back a new array
+    const filteredMonsters = monsters.filter(m =>
+      m.name.toLowerCase().includes(searchField.toLowerCase())
+    );
+
     // Khi state thay doi (bang setState), this render method gets called again
     // Tat ca moi thu nhin giong HTML deu la JSX (div, src, p, button, onClick,...)
     return (
@@ -37,7 +43,7 @@ class App extends React.Component {
             console.log('Normal', this.state);
           }}
         />
-        <CardList monsters={this.state.monsters} />
+        <CardList monsters={filteredMonsters} />
       </div>
     );
   }
