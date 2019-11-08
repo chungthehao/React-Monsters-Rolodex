@@ -10,7 +10,8 @@ class App extends React.Component {
 
     // Default value
     this.state = {
-      monsters: []
+      monsters: [],
+      searchField: ''
     };
   }
 
@@ -25,6 +26,17 @@ class App extends React.Component {
     // Tat ca moi thu nhin giong HTML deu la JSX (div, src, p, button, onClick,...)
     return (
       <div className='App'>
+        <input
+          type='search'
+          placeholder='Search monsters...'
+          onChange={e => {
+            // this.setState is async method -> not happening immediately -> console.log this.state sẽ thấy chưa update
+            this.setState({ searchField: e.target.value }, () =>
+              console.log('Callback', this.state)
+            );
+            console.log('Normal', this.state);
+          }}
+        />
         <CardList monsters={this.state.monsters} />
       </div>
     );
