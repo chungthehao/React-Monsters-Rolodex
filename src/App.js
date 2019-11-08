@@ -14,6 +14,10 @@ class App extends React.Component {
       monsters: [],
       searchField: ''
     };
+
+    // Bind 'this' for our own method
+    // (The bind() method creates a new function that, when called, has its this keyword set to the provided value)
+    //this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -21,6 +25,14 @@ class App extends React.Component {
       .then(res => res.json())
       .then(users => this.setState({ monsters: users }));
   }
+
+  handleChange = e => {
+    // this.setState is async method -> not happening immediately -> console.log this.state sẽ thấy chưa update
+    this.setState({ searchField: e.target.value }, () =>
+      console.log('Callback', this.state)
+    );
+    console.log('Normal', this.state);
+  };
 
   render() {
     const { monsters, searchField } = this.state;
@@ -35,13 +47,7 @@ class App extends React.Component {
       <div className='App'>
         <SearchBox
           placeholder='Search monsters...'
-          handleChange={e => {
-            // this.setState is async method -> not happening immediately -> console.log this.state sẽ thấy chưa update
-            this.setState({ searchField: e.target.value }, () =>
-              console.log('Callback', this.state)
-            );
-            console.log('Normal', this.state);
-          }}
+          handleChange={this.handleChange}
         />
 
         <CardList monsters={filteredMonsters} />
