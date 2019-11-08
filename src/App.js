@@ -45,6 +45,8 @@ class App extends React.Component {
     // Tat ca moi thu nhin giong HTML deu la JSX (div, src, p, button, onClick,...)
     return (
       <div className='App'>
+        <h1>Monsters Rolodex</h1>
+
         <SearchBox
           placeholder='Search monsters...'
           handleChange={this.handleChange}
